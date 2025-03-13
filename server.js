@@ -1,14 +1,21 @@
-const http = require("http");//node.js
+const express = require('express')
+// import express from 'express';
 
-const hostname = "127.0.0.1"; //localhost
-const port = 3000;
+const app = express()
+const port = 3000
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("Hello World\n Hoi Dan IT voi Eric");
-});
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.get('/abc', (req, res) => {
+    res.send('check ABC')
+})
+
+app.get('/hoidanit', (req, res) => {
+    res.send('<h1>hoi dan it voi Eric</h1>')
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
